@@ -2,160 +2,420 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suryadeepta Paul — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
-    /* Base Reset */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Inter', sans-serif; background:#0f1724; color:#e6eef6; line-height:1.6; }
-    a { text-decoration:none; color:inherit; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000000;
+      color: #e6e6e6;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     /* Header */
-    header { position:fixed; top:0; width:100%; background:#0b1220; padding:20px 50px; display:flex; justify-content:space-between; align-items:center; z-index:1000; box-shadow:0 4px 20px rgba(0,0,0,0.5); }
-    header .logo { font-weight:700; color:#6ee7b7; font-size:22px; }
-    nav a { margin-left:20px; color:#94a3b8; font-weight:500; transition:0.3s; }
-    nav a:hover { color:#6ee7b7; }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #000;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px dotted #e6e6e6;
+    }
 
-    /* Hero */
-    .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; text-align:center; background:linear-gradient(135deg,#0f1724,#14202b); }
-    .hero h1 { font-size:60px; color:#fff; margin-bottom:20px; }
-    .hero p { font-size:22px; color:#6ee7b7; margin-bottom:30px; max-width:700px; }
-    .btn { padding:14px 28px; border-radius:50px; font-weight:600; margin:6px; border:none; cursor:pointer; transition:0.3s; }
-    .btn.primary { background:#6ee7b7; color:#0b1220; }
-    .btn.secondary { background:transparent; border:2px solid #6ee7b7; color:#6ee7b7; }
-    .btn:hover { opacity:0.85; }
+    header .logo {
+      font-weight: 700;
+      color: #e6e6e6;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #e6e6e6;
+      font-weight: 500;
+      transition: 0.3s;
+      border-bottom: 1px dotted transparent;
+    }
+
+    nav a:hover {
+      color: #FF5900;
+      border-bottom: 1px dotted #FF5900;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #FF5900;
+      margin: 4px 0;
+      border-radius: 3px;
+    }
+
+    @media(max-width:768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+        border-radius: 0 0 10px 10px;
+        border: 1px dotted #e6e6e6;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 0 50px;
+      gap: 80px;
+    }
+
+    .hero .profile-pic {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border-style: dotted;
+    }
+
+    .hero .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero .intro {
+      max-width: 600px;
+    }
+
+    .hero .intro h1 {
+      font-family: 'poppins', sans-serif;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .hero .intro p {
+      font-family: 'Montserrat';
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .hero .intro .btn {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-right: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: none;
+    }
+
+    .btn.primary {
+      background: #ff5900;
+      color: #fff;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid #e6e6e6;
+      color: #e6e6e6;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
 
     /* Sections */
-    section { padding:100px 50px; max-width:1200px; margin:auto; }
-    section h2 { text-align:center; font-size:36px; color:#6ee7b7; margin-bottom:50px; }
-    .about p { font-size:18px; color:#94a3b8; text-align:center; margin-bottom:16px; }
+    section {
+      padding: 100px 50px;
+      max-width: 1200px;
+      margin: auto;
+      border-bottom: 1px dotted #e6e6e6;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 36px;
+      color: #FF5900;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 50px;
+    }
+
+    .about p {
+      font-size: 18px;
+      color: #e6e6e6;
+      text-align: center;
+      margin-bottom: 16px;
+    }
 
     /* Skills */
-    .skills { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
-    .skill { padding:12px 25px; background:#0b1220; border-radius:50px; font-weight:600; color:#6ee7b7; box-shadow:0 8px 25px rgba(0,0,0,0.5); }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .skill {
+      padding: 12px 25px;
+      background: #000;
+      border: 1px dotted #e6e6e6;
+      border-radius: 50px;
+      font-weight: 600;
+      color: #e6e6e6;
+    }
 
     /* Projects */
-    .projects { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:30px; }
-    .project-card { background:#0b1220; padding:25px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.5); transition:transform 0.3s; }
-    .project-card:hover { transform:translateY(-10px); }
-    .project-card h3 { color:#6ee7b7; margin-bottom:15px; }
-    .project-card p { color:#94a3b8; margin-bottom:15px; }
-    .project-card a { color:#6ee7b7; font-weight:600; }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: #000;
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px dotted #e6e6e6;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-card h3 {
+      color: #FF5900;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .project-card p {
+      color: #e6e6e6;
+      margin-bottom: 15px;
+    }
+
+    .project-card a {
+      color: #FF5900;
+      font-weight: 600;
+    }
 
     /* Timeline */
-    .timeline { display:flex; flex-direction:column; gap:25px; }
-    .timeline-item { background:#0b1220; padding:25px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-    .timeline-item h4 { color:#6ee7b7; margin-bottom:10px; }
-    .timeline-item p { color:#94a3b8; }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .timeline-item {
+      background: #000;
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px dotted #e6e6e6;
+    }
+
+    .timeline-item h4 {
+      color: #FF5900;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .timeline-item p {
+      color: #e6e6e6;
+    }
 
     /* Contact */
-    .contact { display:flex; flex-direction:column; gap:12px; align-items:center; }
-    .contact a { color:#6ee7b7; font-weight:600; }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
 
-    footer { text-align:center; padding:50px; color:#94a3b8; font-size:16px; }
+    .contact a {
+      color: #FF5900;
+      font-weight: 600;
+    }
 
-    @media(max-width:768px){
-      .hero h1 { font-size:42px; }
-      .hero p { font-size:18px; }
-      section { padding:80px 20px; }
-      header { padding:15px 20px; }
+    footer {
+      text-align: center;
+      padding: 50px;
+      color: #e6e6e6;
+      font-size: 16px;
+      border-top: 1px dotted #e6e6e6;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    @media(max-width:768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 80px 20px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo">Suryadeepta Paul</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>Hello, I'm Suryadeepta Paul</h1>
-  <p>Front-end Developer | Passionate about building modern, responsive web applications.</p>
-  <div>
-    <button class="btn primary">Download CV</button>
-    <button class="btn secondary">Contact Me</button>
-  </div>
-</section>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>I'm a Computer Science student focused on front-end development. I create modern, simple, and responsive web applications.</p>
-  <p>Always learning, always building.</p>
-</section>
-
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill">HTML</div>
-    <div class="skill">CSS</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">React</div>
-    <div class="skill">C</div>
-    <div class="skill">Python</div>
-  </div>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="projects">
-    <div class="project-card">
-      <h3>Project One</h3>
-      <p>Placeholder description. Replace with your project details.</p>
-      <a href="#">View on GitHub</a>
+  <header>
+    <div class="logo">Suryadeepta Paul</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <div class="project-card">
-      <h3>Project Two</h3>
-      <p>Placeholder description. Replace with your project details.</p>
-      <a href="#">View on GitHub</a>
-    </div>
-    <div class="project-card">
-      <h3>Project Three</h3>
-      <p>Placeholder description. Replace with your project details.</p>
-      <a href="#">View on GitHub</a>
-    </div>
-  </div>
-</section>
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<section id="experience">
-  <h2>Experience & Education</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <h4>Graduation</h4>
-      <p>Scottish Church College — University of Calcutta</p>
+  <section class="hero">
+    <div class="profile-pic">
+      <img src="profile.jpeg" alt="Profile">
     </div>
-    <div class="timeline-item">
-      <h4>Class XII</h4>
-      <p>Falakata High School — 90 (WBCHSE)</p>
+    <div class="intro">
+      <p><i>Hello I'm</i></p>
+      <h1>Suryadeepta</h1>
+      <p style="margin-left: 70px;"><i>Front-end Developer</i></p>
+      <button class="btn primary">Download CV</button>
+      <button class="btn secondary">Contact Info</button>
     </div>
-    <div class="timeline-item">
-      <h4>Class X</h4>
-      <p>Falakata High School — 93 (WBBSE)</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="contact">
-    <a href="mailto:suryadeeptapaul123@gmail.com">Email: suryadeeptapaul123@gmail.com</a>
-    <a href="#">Instagram: @suryadeeptapaul</a>
-    <a href="#">LinkedIn: suryadeepta-paul</a>
-    <a href="#">GitHub: suryadeepta</a>
-  </div>
-</section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I'm a Computer Science student focused on front-end development. I create modern, simple, and responsive web
+      applications.</p>
+    <p>Always learning, always building.</p>
+  </section>
 
-<footer>
-  © Suryadeepta Paul — Built with HTML & CSS
-</footer>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">C</div>
+      <div class="skill">Python</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>Placeholder description. Replace with your project details.</p>
+        <a href="#">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>Placeholder description. Replace with your project details.</p>
+        <a href="#">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Three</h3>
+        <p>Placeholder description. Replace with your project details.</p>
+        <a href="#">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience & Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Graduation</h4>
+        <p>Scottish Church College — University of Calcutta</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Class XII</h4>
+        <p>Falakata High School — 90 (WBCHSE)</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Class X</h4>
+        <p>Falakata High School — 93 (WBBSE)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <a href="mailto:suryadeeptapaul123@gmail.com">Email: suryadeeptapaul123@gmail.com</a>
+      <a href="#">Instagram: @suryadeeptapaul</a>
+      <a href="#">LinkedIn: suryadeepta-paul</a>
+      <a href="#">GitHub: suryadeepta</a>
+    </div>
+  </section>
+
+  <footer>
+    © Suryadeepta Paul — Built with HTML & CSS
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav').classList.toggle('active');
+    }
+  </script>
 
 </body>
+
 </html>
